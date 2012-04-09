@@ -1,0 +1,12 @@
+CACHE MANIFEST
+# 2012-04-09:v1
+
+# Explicitly cached 'master entries'
+CACHE:
+index.html
+
+# Resources that require the user to be online
+NETWORK:
+
+# Fallback resources when offline
+FALLBACK:
