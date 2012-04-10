@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" manifest="sandbox-mobile.appcache">
+	<head>
+		<meta charset="UTF-8">
+		<title>Events</title>
+
+		<style type="text/css">
+			#box {
+				width: 200px;
+				height: 200px;
+				background-color: blue;
+			}
+			#events {
+			    list-style: none;
+			    padding: 0;
+			}
+			#events li {
+				float: left;
+				margin-right: 1em;
+			}
+		</style>
+	</head>
+	<body>
+
+		<h1>Events</h1>
+
+		<p><a href="index.html">Home</a></p>
+
+		<div id="box" draggable="true"></div>
+
+		<ul id="events" style=""></ul>
+
+		<script>
+
+			var eventListWindow = [
+				'scroll', 'mousewheel',
+				'gesturestart', 'gesturechange', 'gestureend',
+				'orientationchange',
+				'pageshow', 'pagehide',
+				'online', 'offline'
+			]
+
+			var eventListBox = [
+				'click', 'dblclick',
+				'mousedown', 'mouseover', 'mouseout', 'mouseup',
+				'touchstart', 'touchmove', 'touchend', 'touchcancel',
+				'dragstart', 'drag', 'dragend', 'drop'
+			];
+
+			var attachEvents = function(events, context) {
+				events.forEach(function(eventName) {
+					context.addEventListener(eventName, function(event) {
+						listEvent(event);
+					}, false)
+				});
+			}
+
+			var listEvent = function(event) {
+				var elm = document.getElementById('events'),
+					li = document.createElement('li');
+				li.innerHTML = event.type;
+				elm.insertBefore(li, elm.firstChild);
+			};
+
+			window.addEventListener('load', function(event) {
+				attachEvents(eventListWindow, window);
+				attachEvents(eventListBox, document.getElementById('box'));
+			}, false);
+
+		</script>
+	</body>
+</html>
