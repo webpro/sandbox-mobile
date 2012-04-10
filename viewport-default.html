@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" manifest="sandbox-mobile.appcache">
+	<head>
+		<meta charset="UTF-8">
+		<title>Mobile Sandbox</title>
+
+		<style type="text/css">
+			* {
+				box-sizing: border-box;
+			}
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			#props {
+				margin-bottom: 2em;
+			}
+		</style>
+
+	</head>
+	<body>
+
+		<h1>Viewport (without <code>width=device-width</code>)</h1>
+
+		<p><a href="index.html">Home</a></p>
+
+		<h2>CSS pixels</h2>
+
+		<p>Layout viewport:</p>
+
+		<ul>
+			<li>document.documentElement.clientWidth / clientHeight</li>
+			<li>window.innerWidth / innerHeight</li>
+			<li>document.documentElement.offsetWidth / offsetHeight</li>
+		</ul>
+
+		<h2>Density-independent pixels (dips)</h2>
+
+		<h2>Device pixels</h2>
+
+		<ul>
+			<li>screen.width / screen.height</li>
+			<li>screen.availWidth / screen.availHeight</li>
+		</ul>
+
+		<h2>Screen properties</h2>
+
+		<div id="props"></div>
+
+		<div style="width: 100%; overflow: hidden;">
+			<img src="img/ruler-1024.png" width="1024">
+		</div>
+
+		<div style="background: url('img/ruler-1024.png') top left no-repeat; height: 42px;">background-image</div>
+
+		<p style="width:100%; border: 5px solid green; text-align: center;">
+			<code>width:100%; text-align: center;</code>
+		</p>
+
+		<div style="width: 100%; overflow: hidden; text-align: center;">
+
+			<div style="width: 320px; background-color: blue;">
+				<code>width:320px</code>
+			</div>
+
+			<div style="width: 640px; background-color: blue;">
+				<code>width:640px</code>
+			</div>
+
+			<div style="width: 768px; background-color: blue;">
+				<code>width:768px</code>
+			</div>
+
+		</div>
+
+		<script src="js/util.js"></script>
+		<script>
+			window.addEventListener('load', function(event) {
+				getProps();
+			}, false);
+		</script>
+	</body>
+</html>
